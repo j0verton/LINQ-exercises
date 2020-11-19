@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-{
-
-}
 
 namespace linq
 {
@@ -16,12 +13,8 @@ namespace linq
             // Find the words in the collection that start with the letter 'L'
             List<string> fruits = new List<string>() { "Lemon", "Apple", "Orange", "Lime", "Watermelon", "Loganberry" };
 
-            IEnumerable<string> LFruits = fruits.Where(fruit => fruit.StartsWith("L"));
-            Console.WriteLine(LFruits);
-
-
-
-
+            List<string> LFruits = fruits.Where(fruit => fruit.StartsWith("L")).ToList();
+            LFruits.ForEach(fruit => Console.WriteLine(fruit));
 
 
             // Which of the following numbers are multiples of 4 or 6
@@ -30,8 +23,8 @@ namespace linq
                 15, 8, 21, 24, 32, 13, 30, 12, 7, 54, 48, 4, 49, 96
             };
 
-            IEnumerable<int> fourSixMultiples = numbers.Where(number => number % 4 == 0 || number % 6 == 0);
-            Console.WriteLine(fourSixMultiples);
+            List<int> fourSixMultiples = numbers.Where(number => number % 4 == 0 || number % 6 == 0).ToList();
+            fourSixMultiples.ForEach(num => Console.WriteLine(num));
 
 
         }
