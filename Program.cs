@@ -69,9 +69,18 @@ namespace linq
 
             //// Partitioning Operations
             List<int> wheresSquaredo = new List<int>()
-{
-    66, 12, 8, 27, 82, 34, 7, 50, 19, 46, 81, 23, 30, 4, 68, 14
-};
+                {
+                    66, 12, 8, 27, 82, 34, 7, 50, 19, 46, 81, 23, 30, 4, 68, 14
+                };
+
+            List<int> noSquaredo = wheresSquaredo.TakeWhile(num =>
+            {
+                double sRootNum = Math.Sqrt(num);
+                bool isSquare = sRootNum % 1 == 0;
+                return !isSquare;
+            }).ToList();
+
+            noSquaredo.ForEach(num => Console.WriteLine(num));
             /*
                 Store each number in the following List until a perfect square
                 is detected.
@@ -80,6 +89,9 @@ namespace linq
 
                 Ref: https://msdn.microsoft.com/en-us/library/system.math.sqrt(v=vs.110).aspx
             */
+
+
+
         }
     }
 }
