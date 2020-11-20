@@ -43,11 +43,16 @@ namespace linq
                     public string BankName { get; set; }
                 }
             */
-            List<ReportItem> millionaireReport = ...
+            List<ReportItem> millionaireReport = banks.Join(customers, bank => bank.Symbol, customer => customer.Bank, (bank, customer) => new ReportItem
+            {
+                BankName = bank.Name,
+                CustomerName = customer.Name
+            }).OrderBy(n => n.CustomerName).ToList();
 
-        foreach (var item in millionaireReport)
+            foreach (var item in millionaireReport)
             {
                 Console.WriteLine($"{item.CustomerName} at {item.BankName}");
             }
         }
     }
+}
