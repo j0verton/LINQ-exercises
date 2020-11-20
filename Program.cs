@@ -47,7 +47,7 @@ namespace linq
             {
                 BankName = bank.Name,
                 CustomerName = customer.Name
-            }).OrderBy(n => n.CustomerName).ToList();
+            }).OrderBy(n => n.CustomerName.Split(" ")[1]).ToList();
 
             foreach (var item in millionaireReport)
             {
