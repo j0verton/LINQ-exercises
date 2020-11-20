@@ -24,15 +24,26 @@ namespace linq
                 new Customer(){ Name="Sid Brown", Balance=49582.68, Bank="CITI"}
             };
 
-            var results = customers.GroupBy(
-                c => c.Bank,
-                c => c.Name,
-                (key, g) => new { Bank = key, Names = g.ToList() });
-            // List<> results
-            foreach (var result in results)
+            List<Customer> millionaires = customers.Where(c => c.Balance > 1e6).ToList();
+
+            // var results = millionaires.GroupBy(
+            //     m => m.Bank,
+            //     m => m.Name,
+            //     (key, g) => new { Bank = key, Names = g.ToList() });
+
+            // // List<> results
+            // foreach (var result in results)
+            // {
+            //     Console.WriteLine($"{result.Bank}: {result.Names.Count} millionaires");
+            // }
+
+
+            millionaires.GroupBy(customer => customer.Bank)
+            .ToList()
+            .ForEach(group =>
             {
-                Console.WriteLine($"{result.Bank}: {result.Names.Count} millionaires");
-            }
+                Console.WriteLine($"{group.Key} {group.Count()}");
+            });
 
             //convert to list 
 
@@ -65,37 +76,41 @@ namespace linq
 
             //             List<string> descend = names.OrderByDescending(n => n).ToList();
             //             descend.ForEach(num => Console.WriteLine(num));
-            //             // Build a collection of these numbers sorted in ascending order
-            //             List<int> numbers = new List<int>()
+
+            // // Build a collection of these numbers sorted in ascending order
+            // List<int> numbers = new List<int>()
             //             {
             //                 15, 8, 21, 24, 32, 13, 30, 12, 7, 54, 48, 4, 49, 96
             //             };
-            //             List<int> sortedNums = numbers.OrderBy(n => n).ToList();
-            //             sortedNums.ForEach(num => Console.WriteLine(num));
-            //// Aggregate Operations
-            //             // Output how many numbers are in this list
-            //             List<int> numbers = new List<int>()
+            // List<int> sortedNums = numbers.OrderBy(n => n).ToList();
+            // sortedNums.ForEach(num => Console.WriteLine(num));
+
+
+            // // Aggregate Operations
+            // // Output how many numbers are in this list
+            // List<int> moreNumbers = new List<int>()
             // {
             //     15, 8, 21, 24, 32, 13, 30, 12, 7, 54, 48, 4, 49, 96
             // };
-            //             Console.WriteLine(numbers.Count());
-            //             // How much money have we made?
-            //             List<double> purchases = new List<double>()
+            // Console.WriteLine(moreNumbers.Count());
+
+            // // How much money have we made?
+            // List<double> purchases = new List<double>()
             // {
             //     2340.29, 745.31, 21.76, 34.03, 4786.45, 879.45, 9442.85, 2454.63, 45.65
             // };
-            //             Console.WriteLine(purchases.Sum());
+            // Console.WriteLine(purchases.Sum());
 
-            //             // What is our most expensive product?
-            //             List<double> prices = new List<double>()
+            // // What is our most expensive product?
+            // List<double> prices = new List<double>()
             // {
             //     879.45, 9442.85, 2454.63, 45.65, 2340.29, 34.03, 4786.45, 745.31, 21.76
             // };
 
 
-            //             Console.WriteLine(prices.Max());
+            // Console.WriteLine(prices.Max());
 
-            //// Partitioning Operations
+            // // Partitioning Operations
             // List<int> wheresSquaredo = new List<int>()
             //     {
             //         66, 12, 8, 27, 82, 34, 7, 50, 19, 46, 81, 23, 30, 4, 68, 14
@@ -109,14 +124,14 @@ namespace linq
             // }).ToList();
 
             // noSquaredo.ForEach(num => Console.WriteLine(num));
-            // /*
-            //     Store each number in the following List until a perfect square
-            //     is detected.
+            /*
+                Store each number in the following List until a perfect square
+                is detected.
 
-            //     Expected output is { 66, 12, 8, 27, 82, 34, 7, 50, 19, 46 } 
+                Expected output is { 66, 12, 8, 27, 82, 34, 7, 50, 19, 46 } 
 
-            //     Ref: https://msdn.microsoft.com/en-us/library/system.math.sqrt(v=vs.110).aspx
-            // */
+                Ref: https://msdn.microsoft.com/en-us/library/system.math.sqrt(v=vs.110).aspx
+            */
 
 
 
