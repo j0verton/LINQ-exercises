@@ -54,6 +54,8 @@ namespace linq
                 Console.WriteLine($"{item.CustomerName} at {item.BankName}");
             }
 
+              
+
 
 
 
@@ -234,8 +236,8 @@ namespace linq
             /*
                 Store each number in the following List until a perfect square
                 is detected.
+                Expected output is { 66, 12, 8, 27, 82, 34, 7, 50, 19, 46 }
 
-                Expected output is { 66, 12, 8, 27, 82, 34, 7, 50, 19, 46 } 
 
                 Ref: https://msdn.microsoft.com/en-us/library/system.math.sqrt(v=vs.110).aspx
             */
